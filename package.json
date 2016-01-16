@@ -1,0 +1,32 @@
+{
+  "name": "outlook-refresh",
+  "version": "1.0.0",
+  "description": "Refresh oauth2 access token with outlook.com API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/globlee/outlook-refresh.git"
+  },
+  "keywords": [
+    "outlook",
+    "access",
+    "token",
+    "oauth",
+    "oauth2",
+    "outlook.com",
+    "refresh",
+    "token"
+  ],
+  "dependencies": {
+    "request":"~2.67.0"
+  },
+  "author": "Meir Bank",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/globlee/outlook-refresh/issues"
+  },
+  "homepage": "https://github.com/globlee/outlook-refresh#readme"
+}
