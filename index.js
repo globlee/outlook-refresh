@@ -1,5 +1,5 @@
 var request = require("request")
-module.exports=function(refreshToken, clientID, clientSecret){
+module.exports=function(refreshToken, clientID, clientSecret, callback){
 
 	var options = {
 		url:"https://login.microsoftonline.com/common/oauth2/v2.0/token",
@@ -11,12 +11,18 @@ module.exports=function(refreshToken, clientID, clientSecret){
 		}
 	};
 	request.post(options, function(err, res, body){
-		try{
-			body = JSON.parse(body);
-		} catch (ex){
-			console.log(ex)
+		if (err){
+			return callback(err)
+		} else {
+
+			try{
+				body = JSON.parse(body);
+				return callback(null, {token: body.access_token, refreshToken: body.refresh_token});
+			} catch (ex){
+				console.log(ex)
+				return callback(err)
+			}
 		}
-		return callback(body.access_token, body.refresh_token);
 	});
 
 };
