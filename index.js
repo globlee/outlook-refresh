@@ -17,10 +17,14 @@ module.exports=function(refreshToken, clientID, clientSecret, callback){
 
 			try{
 				body = JSON.parse(body);
-				return callback(null, {token: body.access_token, refreshToken: body.refresh_token});
+				if (body.error){
+					return callback(body.error)
+				} else {
+					return callback(null, {token: body.access_token, refreshToken: body.refresh_token});
+				}
 			} catch (ex){
 				console.log(ex)
-				return callback(err)
+				return callback(ex)
 			}
 		}
 	});
